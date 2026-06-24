@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escolha seu próximo passo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --border: #272727;
+      --text: #f0f0f0;
+      --muted: #888;
+      --milhas: #f5c842;
+      --renda: #4ade80;
+      --kids: #a78bfa;
+      --radius: 18px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      padding: 28px 18px 48px;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .header h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px, 7vw, 38px);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    .header h1 span {
+      display: block;
+      background: linear-gradient(90deg, var(--milhas), var(--renda), var(--kids));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .sub {
+      margin-top: 14px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* CARDS */
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 22px;
+      text-decoration: none;
+      color: var(--text);
+      display: block;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      border-radius: 4px 0 0 4px;
+    }
+
+    .card.milhas::before { background: var(--milhas); }
+    .card.renda::before  { background: var(--renda); }
+    .card.kids::before   { background: var(--kids); }
+
+    .card:active { transform: scale(0.98); }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .card-icon {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .card-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .card.milhas .card-label { color: var(--milhas); }
+    .card.renda  .card-label { color: var(--renda); }
+    .card.kids   .card-label { color: var(--kids); }
+
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: #aaa;
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 50px;
+      transition: opacity 0.15s;
+    }
+
+    .card.milhas .card-cta { background: var(--milhas); color: #000; }
+    .card.renda  .card-cta { background: var(--renda);  color: #000; }
+    .card.kids   .card-cta { background: var(--kids);   color: #fff; }
+
+    .arrow { font-size: 16px; }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    .footer strong {
+      color: #666;
+    }
+
+    /* Pulse dot */
+    .live-dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      background: var(--renda);
+      border-radius: 50%;
+      margin-right: 6px;
+      animation: pulse 2s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.4); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card { transition: none; }
+      .live-dot { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <p class="eyebrow">Enquanto você vai ao seu destino</p>
+    <h1>Escolha o que vai<span>mudar sua vida</span></h1>
+    <p class="sub"><span class="live-dot"></span>3 oportunidades reais · acesso imediato</p>
+  </div>
+
+  <div class="cards">
+
+    <!-- MILHAS -->
+    <a class="card milhas" href="https://aprendamilhas.com/" target="_blank">
+      <div class="card-top">
+        <div class="card-icon">✈️</div>
+        <div>
+          <p class="card-label">Viagens</p>
+          <h2 class="card-title">Aprenda Milhas</h2>
+        </div>
+      </div>
+      <p class="card-desc">Você já gasta R$ 2.000 por mês. Esse dinheiro pode virar passagens grátis. Descubra como acumular milhas com os gastos que você já tem — e viajar sem pagar.</p>
+      <span class="card-cta">Quero viajar de graça <span class="arrow">→</span></span>
+    </a>
+
+    <!-- RENDA -->
+    <a class="card renda" href="https://portalrendaonline.com/" target="_blank">
+      <div class="card-top">
+        <div class="card-icon">💻</div>
+        <div>
+          <p class="card-label">Renda Extra</p>
+          <h2 class="card-title">Portal Renda Online</h2>
+        </div>
+      </div>
+      <p class="card-desc">Como gerar de R$ 1.500 a R$ 4.000 por mês trabalhando de casa. Uma mentoria individual que vai do zero até o primeiro resultado real.</p>
+      <span class="card-cta">Quero renda extra <span class="arrow">→</span></span>
+    </a>
+
+    <!-- KIDS -->
+    <a class="card kids" href="https://alfabetizacaokids.com/" target="_blank">
+      <div class="card-top">
+        <div class="card-icon">🧒</div>
+        <div>
+          <p class="card-label">Educação Infantil</p>
+          <h2 class="card-title">Método Alfa Kids</h2>
+        </div>
+      </div>
+      <p class="card-desc">Acabe com as birras e acelere o desenvolvimento do seu filho de 0 a 7 anos. Mais de 18.000 famílias já aplicaram esse método em casa.</p>
+      <span class="card-cta">Quero transformar meu filho <span class="arrow">→</span></span>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <strong>Compra 100% segura · Acesso imediato</strong><br>
+    Garantia de 30 dias em todos os produtos
+  </div>
+
+</body>
+</html>
